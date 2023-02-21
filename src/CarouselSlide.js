@@ -29,6 +29,7 @@ const CarouselSlide = ({
 export default CarouselSlide;
 
 CarouselSlide.propTypes = {
+  Img: PropTypes.elementType,
   imgHeight: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   imgUrl: PropTypes.string.isRequired,
   description: PropTypes.node.isRequired,
@@ -37,4 +38,5 @@ CarouselSlide.propTypes = {
 
 CarouselSlide.defaultProps = {
   imgHeight: 500,
+  Img,
 };
