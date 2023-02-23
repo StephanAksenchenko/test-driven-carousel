@@ -54,6 +54,15 @@ describe('CarouselSlide', () => {
     expect(wrapper.prop('className')).toBe(className);
   });
 
+  it('renders correctly', () => {
+    wrapper.setProps({
+      description: 'Description',
+      attribution: 'Attribution',
+    });
+
+    expect(wrapper).toMatchSnapshot();
+  });
+
   describe('Img', () => {
     let mounted;
     const imgUrl = 'https://example.com/default.jpg';
@@ -90,6 +99,10 @@ describe('CarouselSlide', () => {
       expect(mounted).toHaveStyleRule('width', 'auto');
       expect(mounted).toHaveStyleRule('height', 'auto');
       expect(mounted).toHaveStyleRule('object-fit', 'fill');
+    });
+
+    it('renders correctly', () => {
+      expect(mounted.find('img')).toMatchSnapshot();
     });
   });
 });
