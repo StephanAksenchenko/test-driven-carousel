@@ -1,6 +1,7 @@
 import React from 'react';
 import { mount, shallow } from 'enzyme';
 import CarouselSlide from '../CarouselSlide';
+import styled from 'styled-components';
 
 describe('CarouselSlide', () => {
   let wrapper;
@@ -75,6 +76,20 @@ describe('CarouselSlide', () => {
       expect(mounted).toHaveStyleRule('height', '500px');
       mounted.setProps({ imgHeight: 'calc(100vh - 100px' });
       expect(mounted).toHaveStyleRule('height', 'calc(100vh - 100px');
+    });
+
+    it('allows styles to be overridden', () => {
+      const TestImg = styled(CarouselSlide.defaultProps.Img)`
+        width: auto;
+        height: auto;
+        object-fit: fill;
+      `;
+
+      mounted = mount(<TestImg />);
+
+      expect(mounted).toHaveStyleRule('width', 'auto');
+      expect(mounted).toHaveStyleRule('height', 'auto');
+      expect(mounted).toHaveStyleRule('object-fit', 'fill');
     });
   });
 });
